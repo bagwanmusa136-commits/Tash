@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnosis: Love</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#0f1f1a;color:#fff;height:100vh;overflow:hidden}
+.screen{display:none;height:100vh;width:100%;text-align:center;padding:30px}
+.active{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.fade{animation:fadeIn 1.5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+.nav-buttons{position:fixed;bottom:15px;left:0;width:100%;display:flex;justify-content:space-between;padding:0 20px}
+.nav-btn{background:#0f1f1a;border:1px solid #7fd6b2;color:#7fd6b2;padding:10px 18px;border-radius:30px}
+
+.heartbeat{width:240px;height:4px;background:linear-gradient(90deg,#7fd6b2,#7fd6b2,#0f1f1a);
+margin:25px auto;animation:beat 1.2s infinite;border-radius:4px}
+@keyframes beat{0%{width:60px}50%{width:240px}100%{width:60px}}
+
+.pulse-text{margin-top:18px;font-size:15px;color:#7fd6b2;opacity:.85}
+.pulse-result{margin-top:25px;font-size:18px;display:none;line-height:1.7}
+
+.photo{width:180px;height:180px;border-radius:50%;border:4px solid #7fd6b2;margin:20px 0}
+.poetry{direction:rtl;font-size:22px;line-height:2}
+.final-poetry{direction:rtl;font-size:24px;line-height:2.4}
+#s10{overflow-y:auto;padding-bottom:90px}
+
+/* YES NO */
+.answer-box{margin-top:30px;display:flex;gap:22px}
+.answer-btn{background:#0f1f1a;border:2px solid #7fd6b2;color:#7fd6b2;padding:12px 36px;border-radius:40px}
+.answer-btn.yes{border-color:#ffb6c1;color:#ffb6c1}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen active fade" id="s1">
+<h2>Medical Intake System</h2>
+<p>Initializing…</p>
+<p style="margin-top:25px;color:#7fd6b2;">A Valentine’s Day confession, written only for you 🤍</p>
+</div>
+
+<div class="screen fade" id="s2">
+<h3>Patient Case File</h3>
+<p>Patient: My Heart<br>Symptoms: Constant thoughts<br>Assigned Doctor: <b>Dr. Tashu 🤍</b></p>
+</div>
+
+<div class="screen fade" id="s3">
+<h3>DAMS Clinical Mode</h3>
+<p>Concepts revised. Doubts cleared.<br>Diagnosis confirmed.</p>
+<p style="margin-top:20px;color:#7fd6b2;">Loving you feels just as certain 🤍</p>
+</div>
+
+<div class="screen fade" id="s4">
+<h3>Emotional MRI</h3>
+<p>Every scan highlights only one name.<br>No repetition required.</p>
+</div>
+
+<div class="screen fade" id="s5">
+<h3>Final Assessment</h3>
+<p>Accuracy: 100%<br>Doubts: Nil</p>
+<p style="margin-top:18px;color:#7fd6b2;">You are the constant.</p>
+</div>
+
+<!-- ENHANCED PULSE DIAGNOSIS -->
+<div class="screen fade" id="s6">
+<h3>Pulse Diagnosis</h3>
+<p>Hold & feel the pulse</p>
+
+<div class="heartbeat"></div>
+
+<p class="pulse-text">Place your finger gently… rhythm detected</p>
+
+<div class="pulse-result" id="pulseResult">
+<b>Observation:</b> Heart rate increases<br>
+<b>Trigger:</b> Your presence<br>
+<b>Conclusion:</b> Love-induced tachycardia 🤍
+</div>
+
+<p style="margin-top:20px;font-size:13px;opacity:.7;">
+( tap screen to read results )
+</p>
+</div>
+
+<div class="screen fade" id="s7">
+<h3>Primary Cause Identified</h3>
+<img src="her-photo.jpg" class="photo">
+<div class="poetry">
+تمہاری موجودگی ہی کافی ہے<br>
+ہر بیماری کی دوا بننے کے لیے
+</div>
+</div>
+
+<div class="screen fade" id="s8">
+<h3>Prescription</h3>
+<p>• Daily smiles<br>• Endless care<br>• Lifetime togetherness</p>
+<h2>NOT CURABLE 🤍</h2>
+</div>
+
+<div class="screen fade" id="s9">
+<h3>Final Clinical Question</h3>
+<p style="margin-top:18px;">
+After careful observation<br>and undeniable findings…
+</p>
+<p style="margin-top:22px;color:#7fd6b2;">
+Would you allow me<br>to be part of your life —<br>
+not as a case study,<br>but as a constant?
+</p>
+<div class="answer-box">
+<button class="answer-btn yes" onclick="yesAnswer()">YES</button>
+<button class="answer-btn" id="noBtn">NO</button>
+</div>
+<div id="yesResult" style="display:none;margin-top:25px;">
+<div style="font-size:42px;">❤️</div>
+<h2 style="color:#ffb3b3;">I LOVE YOU TASHU 🤍</h2>
+<p>Not a moment. Not a phase.<br>But a choice — every day.</p>
+</div>
+</div>
+
+<div class="screen fade" id="s10">
+<div class="final-poetry">
+دل نے خاموشی کو ہی زبان بنا رکھا ہے<br>
+تیری یادوں کو عبادت سا بنا رکھا ہے<br><br>
+
+ہم نے دیکھا ہے محبت کو ٹھہر کر برسوں<br>
+ایک احساس کو کائنات بنا رکھا ہے<br><br>
+
+عقل کہتی ہے، یہ دنیا ہے حسابوں کا سفر<br>
+دل نے اک نام کو میزان بنا رکھا ہے<br><br>
+
+وقت گزرا ہے بہت، لوگ بدل جاتے ہیں<br>
+ہم نے ہر لمحہ مگر پاس بنا رکھا ہے<br><br>
+
+غم اگر آئے تو حیرت نہیں ہوتی اب ہمیں<br>
+درد کو بھی ترے انداز میں ڈھالا رکھا ہے<br><br>
+
+ہم کہاں اور یہ دعویٰ کہ وفا جانتے ہیں<br>
+بس ترے ہونے کو ایمان بنا رکھا ہے<br><br>
+
+عشق اظہار نہیں، ضبط کا اک قرینہ ہے<br>
+یوں نبھایا کہ اسے راز بنا رکھا ہے<br><br>
+
+آخرش یہ بھی محبت کی نشانی ٹھہری<br>
+تو رہی… اور زمانہ سا بنا رکھا ہے
+</div>
+</div>
+
+<div class="nav-buttons">
+<button class="nav-btn" onclick="prev()">⟵</button>
+<button class="nav-btn" onclick="next()">⟶</button>
+</div>
+
+<script>
+let current=1;
+const total=10;
+let answered=false;
+
+function show(n){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+current=n;
+updateNav();
+}
+
+function next(){ if(current===9 && !answered) return; if(current<total) show(current+1); }
+function prev(){ if(current>1) show(current-1); }
+
+function updateNav(){
+document.querySelectorAll('.nav-btn')[0].style.visibility=current===1?'hidden':'visible';
+document.querySelectorAll('.nav-btn')[1].style.visibility=current===total?'hidden':'visible';
+}
+
+function yesAnswer(){
+answered=true;
+document.querySelector('.answer-box').style.display='none';
+document.getElementById('yesResult').style.display='block';
+}
+
+/* Pulse tap reveal */
+document.getElementById('s6').addEventListener('click',()=>{
+document.getElementById('pulseResult').style.display='block';
+});
+
+/* NO button evasive */
+const noBtn=document.getElementById('noBtn');
+noBtn.addEventListener('mouseenter',()=>{
+noBtn.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*90-45}px)`;
+});
+noBtn.addEventListener('click',()=>{
+noBtn.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*90-45}px)`;
+});
+
+window.onload=updateNav;
+</script>
+
+</body>
+</html>
